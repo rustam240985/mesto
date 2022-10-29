@@ -12,4 +12,10 @@
   color: #FFFFFF;
   display: block;
   margin-top: 48px;
+  transition: opacity .6s ease;
+  cursor: pointer;
+}
+
+.popup__save-button:hover {
+  opacity: 0.8;
 }

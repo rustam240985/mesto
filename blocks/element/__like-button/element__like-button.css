@@ -1,7 +1,0 @@
-.element__like-button {
-  all: unset;
-  flex-shrink: 0;
-  width: 20px;
-  height: 30px;
-  background: url('../../../images/like.svg') center/contain no-repeat;
-}
