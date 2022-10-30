@@ -1,37 +1,36 @@
-// Находим форму в DOM
-let formElement = document.querySelector('.pupup__edit-form');
-// Находим поля формы в DOM
-let nameInput = formElement.querySelector('.popup__input[name="profile-name"]');
-let jobInput = formElement.querySelector('.popup__input[name="profile-profession"]');
+const popup = document.querySelector('.popup');
+const formElement = document.querySelector('.pupup__edit-form');
+const nameInput = formElement.querySelector('.popup__input_value_name');
+const jobInput = formElement.querySelector('.popup__input_value_profession');
 
-let editProfileButton = document.querySelector('.profile__edit-button');
-let closeFormButton = document.querySelector('.popup__close-button');
-let popup = document.querySelector('.popup');
+const profileName = document.querySelector('.profile__name');
+const profileProffesion = document.querySelector('.profile__profession');
+const editProfileButton = document.querySelector('.profile__edit-button');
+const closeFormButton = document.querySelector('.popup__close-button');
 
-let textProfileName = document.querySelector('.profile__name');
-let textProfileProffesion = document.querySelector('.profile__profession');
-console.log(nameInput);
+const likeButtons = document.querySelectorAll('.element__like')
 
 function formSubmitHandler(evt) {
-  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.  
+  evt.preventDefault();
 
-  let profileName = nameInput.value;
-  let profileProfession = jobInput.value;
-
-  textProfileName.textContent = profileName;
-  textProfileProffesion.textContent = profileProfession;
+  profileName.textContent = nameInput.value;
+  profileProffesion.textContent = jobInput.value;
   popup.classList.remove('popup_opened');
 }
 
 function profileEditFormOpen() {
   popup.classList.add('popup_opened');
-  nameInput.value = textProfileName.textContent;
-  jobInput.value = textProfileProffesion.textContent;
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileProffesion.textContent;
 }
 
 function profileEditFormClose() {
   popup.classList.remove('popup_opened');
 }
+
+likeButtons.forEach(button => {
+  button.addEventListener('click', () => button.classList.toggle('element__like_active'));
+})
 
 editProfileButton.addEventListener('click', profileEditFormOpen);
 closeFormButton.addEventListener('click', profileEditFormClose);

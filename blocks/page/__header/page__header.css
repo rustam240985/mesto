@@ -7,3 +7,11 @@
     margin-bottom: 42px;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .page__header {
+    padding: 0 27px;
+    margin-left: -19px;
+    margin-right: -19px;
+  }
+}

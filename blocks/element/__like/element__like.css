@@ -7,12 +7,6 @@
   cursor: pointer;
 }
 
-.element__like:active:hover {
-  transition: none;
-  opacity: 1;
-  background: url('../../../images/like_active.svg') center/contain no-repeat;
-}
-
 .element__like:hover {
   transition: opacity .6s ease;
   opacity: 0.5;
