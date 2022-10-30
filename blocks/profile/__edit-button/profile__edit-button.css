@@ -1,13 +1,11 @@
 .profile__edit-button {
   all: unset;
-  position: absolute;
+  flex-shrink: 0;
   width: 24px;
   height: 24px;
-  top: 16px;
-  right: 0;
+  margin-left: 18px;
   box-sizing: border-box;
   border: 1px solid #FFFFFF;
-  padding: 7px;
   background: url('../../../images/edit-btn-pencil.svg') center/10px 10px no-repeat;
   cursor: pointer;
   transition: opacity .6s ease;
@@ -21,7 +19,6 @@
   .profile__edit-button {
     width: 18px;
     height: 18px;
-    top: 8px;
-    right: 19px;
+    margin-left: 10px;
   }
 }

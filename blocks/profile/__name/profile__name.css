@@ -1,6 +1,5 @@
 .profile__name {
   margin: 0;
-  margin-right: 42px;
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -16,5 +15,6 @@
     font-size: 27px;
     line-height: 1.22;
     text-align: center;
+    padding-left: 25px;
   }
 }

@@ -1,0 +1,12 @@
+.profile__line {
+  display: flex;
+  width: 100%;
+  align-items: baseline;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 425px) {
+  .profile__line {
+    justify-content: center;
+  }
+}

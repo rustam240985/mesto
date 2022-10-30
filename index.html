@@ -19,9 +19,11 @@
         <section class="profile page__profile">
           <img class="profile__avatar" src="./images/avatar_kusto.jpg" alt="Жак-Ив Кусто">
           <div class="profile__info">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <div class="profile__line">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <button class="profile__edit-button"></button>
+            </div>
             <p class="profile__profession">Исследователь океана</p>
-            <button class="profile__edit-button"></button>
           </div>
           <button class="profile__add-button"></button>
         </section>
@@ -30,42 +32,42 @@
             <img class="element__image" src="./images/karachaevo.jpg" alt="Карачаевск">
             <div class="element__info">
               <h2 class="element__title">Карачаевск</h2>
-              <button class="element__like"></button>
+              <button type="button" class="element__like"></button>
             </div>
           </article>
           <article class="element">
             <img class="element__image" src="./images/elbrus.jpg" alt="Гора Эльбрус">
             <div class="element__info">
               <h2 class="element__title">Гора Эльбрус</h2>
-              <button class="element__like"></button>
+              <button type="button" class="element__like"></button>
             </div>
           </article>
           <article class="element">
             <img class="element__image" src="./images/dombay.jpg" alt="Домбай">
             <div class="element__info">
               <h2 class="element__title">Карачаевск</h2>
-              <button class="element__like"></button>
+              <button type="button" class="element__like"></button>
             </div>
           </article>
           <article class="element">
             <img class="element__image" src="./images/elbrus.jpg" alt="Гора Эльбрус">
             <div class="element__info">
               <h2 class="element__title">Гора Эльбрус</h2>
-              <button class="element__like"></button>
+              <button type="button" class="element__like"></button>
             </div>
           </article>
           <article class="element">
             <img class="element__image" src="./images/dombay.jpg" alt="Домбай">
             <div class="element__info">
               <h2 class="element__title">Домбай</h2>
-              <button class="element__like"></button>
+              <button type="button" class="element__like"></button>
             </div>
           </article>
           <article class="element">
             <img class="element__image" src="./images/karachaevo.jpg" alt="Карачаево-Черкесская республика">
             <div class="element__info">
               <h2 class="element__title">Карачаево-Черкесская республика</h2>
-              <button class="element__like"></button>
+              <button type="button" class="element__like"></button>
             </div>
           </article>
         </section>
@@ -77,7 +79,7 @@
     <div class="popup">
       <div class="popup__container">
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form class="popup__form" action="#">
+        <form class="popup__form" action="#" name="form">
           <input class="popup__input popup__input_value_name" type="text" name="profile-name">
           <input class="popup__input popup__input_value_profession" type="text" name="profile-profession">
           <button type="submit" class="popup__save">Сохранить</button>

@@ -15,7 +15,7 @@ function formSubmitHandler(evt) {
 
   profileName.textContent = nameInput.value;
   profileProffesion.textContent = jobInput.value;
-  popup.classList.remove('popup_opened');
+  profileEditFormClose();
 }
 
 function profileEditFormOpen() {
@@ -28,9 +28,9 @@ function profileEditFormClose() {
   popup.classList.remove('popup_opened');
 }
 
-likeButtons.forEach(button => {
-  button.addEventListener('click', () => button.classList.toggle('element__like_active'));
-})
+for (let i = 0; i < likeButtons.length; i += 1) {
+  likeButtons[i].addEventListener('click', () => likeButtons[i].classList.toggle('element__like_active'));
+}
 
 editProfileButton.addEventListener('click', profileEditFormOpen);
 closeFormButton.addEventListener('click', profileEditFormClose);

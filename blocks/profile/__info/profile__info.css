@@ -1,8 +1,8 @@
 .profile__info {
-  position: relative;
   box-sizing: border-box;
-  overflow: hidden;
   width: 336px;
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (max-width: 425px) {
