@@ -1,6 +1,6 @@
 const popup = document.querySelector('.popup');
+const closePopupButton = popup.querySelector('.popup__close');
 const formElement = document.querySelector('.popup__form');
-const closeFormButton = document.querySelector('.popup__close');
 const nameInput = formElement.querySelector('.popup__input_value_name');
 const jobInput = formElement.querySelector('.popup__input_value_profession');
 
@@ -33,5 +33,5 @@ for (let i = 0; i < likeButtons.length; i += 1) {
 }
 
 editProfileButton.addEventListener('click', popupOpen);
-closeFormButton.addEventListener('click', popupClose);
+closePopupButton.addEventListener('click', popupClose);
 formElement.addEventListener('submit', formSubmitHandler);
