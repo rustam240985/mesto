@@ -15,16 +15,16 @@ function formSubmitHandler(evt) {
 
   profileName.textContent = nameInput.value;
   profileProffesion.textContent = jobInput.value;
-  profileEditFormClose();
+  popupClose();
 }
 
-function profileEditFormOpen() {
-  popup.classList.add('popup_opened');
+function popupOpen() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileProffesion.textContent;
+  popup.classList.add('popup_opened');
 }
 
-function profileEditFormClose() {
+function popupClose() {
   popup.classList.remove('popup_opened');
 }
 
@@ -32,6 +32,6 @@ for (let i = 0; i < likeButtons.length; i += 1) {
   likeButtons[i].addEventListener('click', () => likeButtons[i].classList.toggle('element__like_active'));
 }
 
-editProfileButton.addEventListener('click', profileEditFormOpen);
-closeFormButton.addEventListener('click', profileEditFormClose);
+editProfileButton.addEventListener('click', popupOpen);
+closeFormButton.addEventListener('click', popupClose);
 formElement.addEventListener('submit', formSubmitHandler);

@@ -2,8 +2,14 @@
   margin-bottom: 66px;
 }
 
+@media screen and (max-width: 900px) {
+  .page__elements {
+    margin-bottom: 30px;
+  }
+}
+
 @media screen and (max-width: 425px) {
   .page__elements {
-    margin-bottom: 29px;
+    margin-bottom: 30px;
   }
 }

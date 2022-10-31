@@ -3,6 +3,17 @@
   width: 142px;
   height: 33px;
   background: url('../../../images/header__logo.svg') 0 0/contain no-repeat;
+  transition: opacity .6s ease;
+}
+
+.header__logo:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 940px) {
+  .header__logo {
+    margin-left: 27px;
+  }
 }
 
 @media screen and (max-width: 740px) {
