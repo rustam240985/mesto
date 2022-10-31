@@ -1,5 +1,5 @@
 const popup = document.querySelector('.popup');
-const closePopupButton = popup.querySelector('.popup__close');
+const closePopupButton = document.querySelector('.popup__close');
 const formElement = document.querySelector('.popup__form');
 const nameInput = formElement.querySelector('.popup__input_value_name');
 const jobInput = formElement.querySelector('.popup__input_value_profession');
