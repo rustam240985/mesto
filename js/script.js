@@ -92,8 +92,8 @@ function popupOpen(event) {
   }
 }
 
-function popupClose(event) {
-  document.querySelectorAll('.popup').forEach(popup => popup.classList.remove('popup_opened'))
+function popupClose() {
+  document.querySelector('.popup_opened').classList.remove('popup_opened');
 }
 
 editProfileButton.addEventListener('click', popupOpen);
