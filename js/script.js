@@ -80,7 +80,7 @@ initialCards.forEach((dataElement) => {
 function formAddCardSubmitHandler(evt) {
   evt.preventDefault();
   renderElement({ name: nameCard.value, link: sourceImageCard.value });
-  popupClose();
+  popupClose(popupAddCard);
 }
 
 //Редактирование профиля
@@ -89,14 +89,13 @@ function formEditProfileSubmitHandler(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileProffesion.textContent = jobInput.value;
-  popupClose();
+  popupClose(popupEditProfile);
 }
 
 //Открытие попапа
 
 function popupOpen(event) {
   if (event.target.classList.contains('profile__edit-button')) {
-    console.dir(event.target);
     nameInput.value = profileName.textContent;
     jobInput.value = profileProffesion.textContent;
     popupEditProfile.classList.add('popup_opened');
@@ -107,26 +106,26 @@ function popupOpen(event) {
     popupAddCard.classList.add('popup_opened');
   }
   else if (event.target.classList.contains('element__image')) {
-    popupOpenImage.classList.add('popup_opened');
     popupImage.src = `${event.target.src}`;
     popupImage.alt = `${event.target.alt}`;
     popupImageCaption.textContent = `${event.target.alt}`;
+    popupOpenImage.classList.add('popup_opened');
   }
 }
 
 //Закрытие попапа
 
-function popupClose() {
-  document.querySelector('.popup_opened').classList.remove('popup_opened');
+function popupClose(popup) {
+  popup.classList.remove('popup_opened');
 }
 
 //Обработчики событий (кнопка редактирования профиля, кнопка добавления карточки, кнопки закрытия попапов, формы)
 
 editProfileButton.addEventListener('click', popupOpen);
 addCardButton.addEventListener('click', popupOpen);
-closePopupAddCard.addEventListener('click', popupClose);
-closePopupEditProfile.addEventListener('click', popupClose);
-closeImagePopup.addEventListener('click', popupClose);
+closePopupAddCard.addEventListener('click', () => popupClose(popupAddCard));
+closePopupEditProfile.addEventListener('click', () => popupClose(popupEditProfile));
+closeImagePopup.addEventListener('click', () => popupClose(popupOpenImage));
 formElement.addEventListener('submit', formEditProfileSubmitHandler);
 formCard.addEventListener('submit', formAddCardSubmitHandler);
 

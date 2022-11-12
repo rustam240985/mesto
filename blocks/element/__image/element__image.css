@@ -6,6 +6,8 @@
   object-position: center;
   border-radius: 10px 10px 0 0;
   cursor: pointer;
+  -webkit-filter: brightness(75%);
+  filter: brightness(75%);
   transition: opacity .6s ease;
 }
 
