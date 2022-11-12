@@ -15,6 +15,7 @@ const profileProffesion = document.querySelector('.profile__profession');
 const editProfileButton = document.querySelector('.profile__edit-button');
 const addCardButton = document.querySelector('.profile__add-button');
 
+
 const elementTemplate = document.querySelector('#element-template').content;
 
 const initialCards = [
@@ -48,13 +49,14 @@ function generateElement(dataElement) {
   const newElement = elementTemplate.querySelector('.element').cloneNode(true);
   const title = newElement.querySelector('.element__title');
   const image = newElement.querySelector('.element__image');
-  const likeButton = newElement.querySelector('.element__like')
+  const likeButton = newElement.querySelector('.element__like');
+  const trashCardButton = newElement.querySelector('.element__trash');
   title.textContent = dataElement.name;
   image.src = dataElement.link;
   image.alt = dataElement.name;
 
   likeButton.addEventListener('click', () => likeButton.classList.toggle('element__like_active'));
-
+  trashCardButton.addEventListener('click', evt => evt.target.closest('.element').remove());
   return newElement;
 }
 
@@ -100,5 +102,5 @@ editProfileButton.addEventListener('click', popupOpen);
 closePopupAddCard.addEventListener('click', popupClose);
 closePopupEditProfile.addEventListener('click', popupClose);
 formElement.addEventListener('submit', formEditProfileSubmitHandler);
-formCard.addEventListener('submit', formAddCardSubmitHandler)
-addCardButton.addEventListener('click', popupOpen)
+formCard.addEventListener('submit', formAddCardSubmitHandler);
+addCardButton.addEventListener('click', popupOpen);

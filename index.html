@@ -41,7 +41,7 @@
         <form class="popup__form edit-profile-form" action="#" name="edit-profile-form">
           <input class="popup__input popup__input_value_name" type="text" name="profile-name" required>
           <input class="popup__input popup__input_value_profession" type="text" name="profile-profession" required>
-          <button type="submit" class="popup__save">Сохранить</button>
+          <button class="popup__save" type="submit">Сохранить</button>
         </form>
         <button class="popup__close" type="button" aria-label="Закрыть"></button>
       </div>
@@ -54,7 +54,7 @@
             required>
           <input class="popup__input popup__input_value_url" type="text" name="card_url"
             placeholder="Ссылка на картинку" required>
-          <button type="submit" class="popup__save">Сохранить</button>
+          <button class="popup__save" type="submit">Создать</button>
         </form>
         <button class="popup__close" type="button" aria-label="Закрыть"></button>
       </div>
@@ -65,6 +65,7 @@
   <template id="element-template">
     <article class="element">
       <img class="element__image" src="#" alt="Шаблон карточки">
+      <button class="element__trash" type="button" aria-label="Удалить карточку"></button>
       <div class="element__info">
         <h2 class="element__title"></h2>
         <button type="button" class="element__like" aria-label="Нравится"></button>
