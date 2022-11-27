@@ -129,4 +129,3 @@ addCardButton.addEventListener('click', () => {
 formElement.addEventListener('submit', handleProfileFormSubmit);
 formCard.addEventListener('submit', handleCardFormSubmit);
 
-
