@@ -99,12 +99,16 @@ function handleProfileFormSubmit(evt) {
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  popup.addEventListener('click', popupListenerClick);
+  document.addEventListener('keydown', popupListenerEsc)
 }
 
 //Закрытие попапа
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  popup.removeEventListener('click', popupListenerClick);
+  document.removeEventListener('keydown', popupListenerEsc)
 }
 
 //Обработчики закрытия попапов
@@ -113,6 +117,20 @@ closeButtons.forEach(button => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
+
+// Функции обработчиков событий зарытия окна по клику вне контейнера, нажатию Escape
+
+const popupListenerClick = (evt) => {
+  closePopup(evt.target);
+}
+
+const popupListenerEsc = (evt) => {
+  const popupOpened = document.querySelector('.popup_opened');
+  if (evt.key === 'Escape' && popupOpened) {
+    evt.preventDefault();
+    closePopup(popupOpened);
+  }
+}
 
 //Обработчики событий (кнопка редактирования профиля, кнопка добавления карточки, формы)
 

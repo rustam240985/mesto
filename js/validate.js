@@ -1,3 +1,5 @@
+// Отображения/скрытия ошибки
+
 const showError = (config, formItem, inputElement, errorMessage) => {
   const formError = formItem.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(config.inputErrorClass);
@@ -12,6 +14,8 @@ const hideError = (config, formItem, inputElement) => {
   formError.textContent = '';
 };
 
+// Валидации полей ввода
+
 const checkInputValidity = (config, formItem, inputElement) => {
   if (!inputElement.validity.valid) {
     showError(config, formItem, inputElement, inputElement.validationMessage);
@@ -24,6 +28,8 @@ const hasInvalidInput = (inputList) => {
   return inputList.some(input => !input.validity.valid)
 }
 
+// Переключение состояния кнопки
+
 const toggleButtonState = (config, inputList, buttonSave) => {
   if (hasInvalidInput(inputList)) {
     buttonSave.classList.add(config.inactiveButtonClass);
@@ -32,6 +38,8 @@ const toggleButtonState = (config, inputList, buttonSave) => {
     buttonSave.classList.remove(config.inactiveButtonClass);
   }
 }
+
+// Обработчики
 
 const setEventListeners = (formItem, config) => {
   const inputList = Array.from(formItem.querySelectorAll(config.inputSelector));
@@ -44,6 +52,8 @@ const setEventListeners = (formItem, config) => {
     })
   })
 }
+
+// Включение валидации
 
 const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
