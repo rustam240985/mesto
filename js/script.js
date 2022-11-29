@@ -106,9 +106,15 @@ function openPopup(popup) {
 //Закрытие попапа
 
 function closePopup(popup) {
+  const popupForm = popup.querySelector('form');
+  const inputList = popupForm.querySelectorAll('input');
   popup.classList.remove('popup_opened');
   popup.removeEventListener('click', popupListenerClick);
   document.removeEventListener('keydown', popupListenerEsc);
+  inputList.forEach(inputElement => {
+    hideError(configValidate, popupForm, inputElement);
+  })
+
 }
 
 //Обработчики закрытия попапов

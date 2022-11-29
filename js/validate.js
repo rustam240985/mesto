@@ -58,7 +58,6 @@ const setEventListeners = (formItem, config) => {
   const buttonSave = formItem.querySelector(config.submitButtonSelector);
   toggleButtonState(config, inputList, buttonSave);
   inputList.forEach(inputElement => {
-    hideError(config, formItem, inputElement);
     inputElement.addEventListener('input', (evt) => {
       toggleButtonState(config, inputList, buttonSave);
       checkInputValidity(config, formItem, inputElement);
