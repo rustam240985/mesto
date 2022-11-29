@@ -101,7 +101,6 @@ function openPopup(popup) {
   popup.classList.add('popup_opened');
   popup.addEventListener('click', popupListenerClick);
   document.addEventListener('keydown', popupListenerEsc);
-  enableValidation(configValidate);
 }
 
 //Закрытие попапа
@@ -149,4 +148,6 @@ addCardButton.addEventListener('click', () => {
 });
 formElement.addEventListener('submit', handleProfileFormSubmit);
 formCard.addEventListener('submit', handleCardFormSubmit);
+
+enableValidation(configValidate);
 
