@@ -1,3 +1,12 @@
+const configValidate = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save',
+  inactiveButtonClass: 'popup__save_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
+}
+
 // Отображения/скрытия ошибки
 
 const showError = (config, formItem, inputElement, errorMessage) => {
@@ -13,6 +22,7 @@ const hideError = (config, formItem, inputElement) => {
   formError.classList.remove(config.errorClass);
   formError.textContent = '';
 };
+
 
 // Валидации полей ввода
 
@@ -33,9 +43,11 @@ const hasInvalidInput = (inputList) => {
 const toggleButtonState = (config, inputList, buttonSave) => {
   if (hasInvalidInput(inputList)) {
     buttonSave.classList.add(config.inactiveButtonClass);
+    buttonSave.setAttribute("disabled", "disabled")
   }
   else {
     buttonSave.classList.remove(config.inactiveButtonClass);
+    buttonSave.removeAttribute("disabled");
   }
 }
 
@@ -46,7 +58,8 @@ const setEventListeners = (formItem, config) => {
   const buttonSave = formItem.querySelector(config.submitButtonSelector);
   toggleButtonState(config, inputList, buttonSave);
   inputList.forEach(inputElement => {
-    inputElement.addEventListener('input', () => {
+    hideError(config, formItem, inputElement);
+    inputElement.addEventListener('input', (evt) => {
       toggleButtonState(config, inputList, buttonSave);
       checkInputValidity(config, formItem, inputElement);
     })
@@ -62,11 +75,3 @@ const enableValidation = (config) => {
   });
 };
 
-enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active'
-});

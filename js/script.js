@@ -100,7 +100,8 @@ function handleProfileFormSubmit(evt) {
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   popup.addEventListener('click', popupListenerClick);
-  document.addEventListener('keydown', popupListenerEsc)
+  document.addEventListener('keydown', popupListenerEsc);
+  enableValidation(configValidate);
 }
 
 //Закрытие попапа
@@ -108,7 +109,7 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   popup.removeEventListener('click', popupListenerClick);
-  document.removeEventListener('keydown', popupListenerEsc)
+  document.removeEventListener('keydown', popupListenerEsc);
 }
 
 //Обработчики закрытия попапов
@@ -121,7 +122,9 @@ closeButtons.forEach(button => {
 // Функции обработчиков событий зарытия окна по клику вне контейнера, нажатию Escape
 
 const popupListenerClick = (evt) => {
-  closePopup(evt.target);
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.target);
+  }
 }
 
 const popupListenerEsc = (evt) => {

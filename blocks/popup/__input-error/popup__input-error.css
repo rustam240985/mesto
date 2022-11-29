@@ -5,6 +5,7 @@
   font-size: 12px;
   line-height: 1.25;
   color: #FF0000;
+  visibility: hidden;
   opacity: 0;
   transition: 0.3s;
   min-height: 30px;
