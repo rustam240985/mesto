@@ -135,7 +135,7 @@ const popupListenerEsc = (evt) => {
   }
 }
 
-//Обработчики событий (кнопка редактирования профиля, кнопка добавления карточки, формы)
+// Обработчики событий (кнопка редактирования профиля, кнопка добавления карточки, формы)
 
 editProfileButton.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
