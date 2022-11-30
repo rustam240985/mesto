@@ -65,6 +65,18 @@ const setEventListeners = (formItem, config) => {
   })
 }
 
+// Обнуление валидации
+
+const clearValidation = (formItem, config) => {
+  const inputList = Array.from(formItem.querySelectorAll(config.inputSelector));
+  const buttonSave = formItem.querySelector(config.submitButtonSelector);
+  inputList.forEach(inputEl => {
+    if (inputEl.classList.contains(config.inputErrorClass))
+      hideError(config, formItem, inputEl);
+  })
+  toggleButtonState(config, inputList, buttonSave);
+}
+
 // Включение валидации
 
 const enableValidation = (config) => {
@@ -74,3 +86,4 @@ const enableValidation = (config) => {
   });
 };
 
+enableValidation(configValidate);

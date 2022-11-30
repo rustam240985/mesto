@@ -1,3 +1,4 @@
+const popups = document.querySelectorAll('.popup')
 const popupEditProfile = document.querySelector('.popup-profile');
 const popupAddCard = document.querySelector('.popup-add-card');
 const popupOpenImage = document.querySelector('.popup-image');
@@ -99,42 +100,32 @@ function handleProfileFormSubmit(evt) {
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  popup.addEventListener('click', popupListenerClick);
-  document.addEventListener('keydown', popupListenerEsc);
+  document.addEventListener('keydown', setEventListenerEsc);
 }
 
 //Закрытие попапа
 
 function closePopup(popup) {
-  const popupForm = popup.querySelector('form');
-  const inputList = popupForm.querySelectorAll('input');
   popup.classList.remove('popup_opened');
-  popup.removeEventListener('click', popupListenerClick);
-  document.removeEventListener('keydown', popupListenerEsc);
-  inputList.forEach(inputElement => {
-    hideError(configValidate, popupForm, inputElement);
-  })
-
+  document.removeEventListener('keydown', setEventListenerEsc);
 }
 
 //Обработчики закрытия попапов
 
-closeButtons.forEach(button => {
-  const popup = button.closest('.popup');
-  button.addEventListener('click', () => closePopup(popup));
-});
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup)
+    }
+    if (evt.target.classList.contains('popup__close')) {
+      closePopup(popup)
+    }
+  })
+})
 
-// Функции обработчиков событий зарытия окна по клику вне контейнера, нажатию Escape
-
-const popupListenerClick = (evt) => {
-  if (evt.target === evt.currentTarget) {
-    closePopup(evt.target);
-  }
-}
-
-const popupListenerEsc = (evt) => {
-  const popupOpened = document.querySelector('.popup_opened');
-  if (evt.key === 'Escape' && popupOpened) {
+const setEventListenerEsc = (evt) => {
+  if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
     evt.preventDefault();
     closePopup(popupOpened);
   }
@@ -145,15 +136,17 @@ const popupListenerEsc = (evt) => {
 editProfileButton.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileProffesion.textContent;
+  clearValidation(formElement, configValidate);
   openPopup(popupEditProfile);
 });
 addCardButton.addEventListener('click', () => {
   nameCard.value = '';
   sourceImageCard.value = '';
+  clearValidation(formCard, configValidate);
   openPopup(popupAddCard);
 });
 formElement.addEventListener('submit', handleProfileFormSubmit);
 formCard.addEventListener('submit', handleCardFormSubmit);
 
-enableValidation(configValidate);
+
 
