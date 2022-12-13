@@ -1,9 +1,11 @@
+import { Card } from "./card.js";
+
 const popups = document.querySelectorAll('.popup')
 const popupEditProfile = document.querySelector('.popup-profile');
 const popupAddCard = document.querySelector('.popup-add-card');
-const popupOpenImage = document.querySelector('.popup-image');
+/* const popupOpenImage = document.querySelector('.popup-image');
 const bigImage = popupOpenImage.querySelector('.popup__image');
-const bigImageCaption = popupOpenImage.querySelector('.popup__caption');
+const bigImageCaption = popupOpenImage.querySelector('.popup__caption'); */
 const closeButtons = document.querySelectorAll('.popup__close');
 const formElement = document.querySelector('.edit-profile-form');
 const formCard = document.querySelector('.add-card-form');
@@ -17,7 +19,7 @@ const profileName = document.querySelector('.profile__name');
 const profileProffesion = document.querySelector('.profile__profession');
 const editProfileButton = document.querySelector('.profile__edit-button');
 const addCardButton = document.querySelector('.profile__add-button');
-const elementTemplate = document.querySelector('#element-template').content;
+
 
 //Массив с карточками(заголовок, путь)
 
@@ -50,7 +52,7 @@ const initialCards = [
 
 //Генерация карточки
 
-function generateElement(dataElement) {
+/* function generateElement(dataElement) {
   const newElement = elementTemplate.querySelector('.element').cloneNode(true);
   const title = newElement.querySelector('.element__title');
   const image = newElement.querySelector('.element__image');
@@ -69,12 +71,14 @@ function generateElement(dataElement) {
     openPopup(popupOpenImage)
   })
   return newElement;
-}
+} */
 
 //Добавление карточки на страницу
 
+
+
 function renderElement(dataElement) {
-  elementsSection.prepend(generateElement(dataElement));
+  elementsSection.prepend(new Card(dataElement, '#element-template').generateElement());
 }
 
 initialCards.forEach(dataElement => {
@@ -98,14 +102,14 @@ function handleProfileFormSubmit(evt) {
 
 //Открытие попапа
 
-function openPopup(popup) {
+export function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', setEventListenerEsc);
 }
 
 //Закрытие попапа
 
-function closePopup(popup) {
+export function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', setEventListenerEsc);
 }
