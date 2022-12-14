@@ -10,7 +10,6 @@ export class Card {
     this._name = dataElement.name;
     this._image = dataElement.link;
     this._templateSelector = templateSelector;
-
   }
   _getElement() {
     const cardElement = elementTemplate
