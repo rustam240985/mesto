@@ -41,9 +41,8 @@ export class Card {
     this._element.querySelector('.element__image').src = this._image;
     this._element.querySelector('.element__image').alt = this._name;
 
-
     this._setEventListeners();
 
     return this._element;
   }
-}
+} 
