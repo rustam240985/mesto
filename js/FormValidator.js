@@ -1,25 +1,24 @@
 
 
 export class FormValidator {
-  constructor(config, formItem) {
-    this._formSelector = config.formSelector;
+  constructor(config, formSelector) {
+    this._formSelector = formSelector;
     this._inputSelector = config.inputSelector;
     this._submitButtonSelector = config.submitButtonSelector;
     this._inactiveButtonClass = config.inactiveButtonClass;
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
-    this._formItem = formItem;
   }
 
   _showError = (inputElement, errorMessage) => {
-    const formError = this._formItem.querySelector(`.${inputElement.id}-error`);
+    const formError = this._formSelector.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(this._inputErrorClass);
     formError.textContent = errorMessage;
     formError.classList.add(this._errorClass);
   };
 
   _hideError = (inputElement) => {
-    const formError = this._formItem.querySelector(`.${inputElement.id}-error`);
+    const formError = this._formSelector.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(this._inputErrorClass);
     formError.classList.remove(this._errorClass);
     formError.textContent = '';
@@ -53,8 +52,8 @@ export class FormValidator {
   // Обработчики
 
   _setEventListeners = () => {
-    const inputList = Array.from(this._formItem.querySelectorAll(this._inputSelector));
-    const buttonSave = this._formItem.querySelector(this._submitButtonSelector);
+    const inputList = Array.from(this._formSelector.querySelectorAll(this._inputSelector));
+    const buttonSave = this._formSelector.querySelector(this._submitButtonSelector);
     this._toggleButtonState(inputList, buttonSave);
     inputList.forEach(inputElement => {
       inputElement.addEventListener('input', (evt) => {
@@ -67,8 +66,8 @@ export class FormValidator {
   // Обнуление валидации
 
   clearValidation = () => {
-    const inputList = Array.from(this._formItem.querySelectorAll(this._inputSelector));
-    const buttonSave = this._formItem.querySelector(this._submitButtonSelector);
+    const inputList = Array.from(this._formSelector.querySelectorAll(this._inputSelector));
+    const buttonSave = this._formSelector.querySelector(this._submitButtonSelector);
     inputList.forEach(inputEl => {
       if (inputEl.classList.contains(this._inputErrorClass)) {
         this._hideError(inputEl);

@@ -1,7 +1,7 @@
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 
-const popups = document.querySelectorAll('.popup')
+const popups = document.querySelectorAll('.popup');
 const popupEditProfile = document.querySelector('.popup-profile');
 const popupAddCard = document.querySelector('.popup-add-card');
 const formElement = document.querySelector('.edit-profile-form');
@@ -60,6 +60,8 @@ const formCardValidator = new FormValidator(configValidate, formCard);
 
 formElementValidator.enableValidation();
 formCardValidator.enableValidation();
+
+
 
 function renderElement(dataElement) {
   const card = new Card(dataElement, '#element-template');
