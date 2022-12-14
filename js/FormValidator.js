@@ -66,7 +66,7 @@ export class FormValidator {
 
   // Обнуление валидации
 
-  _clearValidation = () => {
+  clearValidation = () => {
     const inputList = Array.from(this._formItem.querySelectorAll(this._inputSelector));
     const buttonSave = this._formItem.querySelector(this._submitButtonSelector);
     inputList.forEach(inputEl => {
@@ -79,9 +79,6 @@ export class FormValidator {
 
   // Включение валидации
 
-  enableValidation = () => {
-    this._clearValidation();
-    this._setEventListeners();
-  };
+  enableValidation = () => this._setEventListeners();
 
 }
