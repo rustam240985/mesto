@@ -1,5 +1,3 @@
-
-
 export class FormValidator {
   constructor(config, formSelector) {
     this._formSelector = formSelector;
@@ -8,13 +6,15 @@ export class FormValidator {
     this._inactiveButtonClass = config.inactiveButtonClass;
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
+    this._inputList = Array.from(this._formSelector.querySelectorAll(this._inputSelector));
+    this._buttonSave = this._formSelector.querySelector(this._submitButtonSelector);
   }
 
   _showError = (inputElement, errorMessage) => {
-    const formError = this._formSelector.querySelector(`.${inputElement.id}-error`);
+    this._formError = this._formSelector.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(this._inputErrorClass);
-    formError.textContent = errorMessage;
-    formError.classList.add(this._errorClass);
+    this._formError.textContent = errorMessage;
+    this._formError.classList.add(this._errorClass);
   };
 
   _hideError = (inputElement) => {
@@ -32,32 +32,30 @@ export class FormValidator {
     }
   };
 
-  _hasInvalidInput = (inputList) => {
-    return inputList.some(input => !input.validity.valid)
+  _hasInvalidInput = () => {
+    return this._inputList.some(input => !input.validity.valid)
   }
 
   // Переключение состояния кнопки
 
-  _toggleButtonState = (inputList, buttonSave) => {
-    if (this._hasInvalidInput(inputList)) {
-      buttonSave.classList.add(this._inactiveButtonClass);
-      buttonSave.setAttribute("disabled", "disabled")
+  _toggleButtonState = () => {
+    if (this._hasInvalidInput()) {
+      this._buttonSave.classList.add(this._inactiveButtonClass);
+      this._buttonSave.setAttribute("disabled", "disabled")
     }
     else {
-      buttonSave.classList.remove(this._inactiveButtonClass);
-      buttonSave.removeAttribute("disabled");
+      this._buttonSave.classList.remove(this._inactiveButtonClass);
+      this._buttonSave.removeAttribute("disabled");
     }
   }
 
   // Обработчики
 
   _setEventListeners = () => {
-    const inputList = Array.from(this._formSelector.querySelectorAll(this._inputSelector));
-    const buttonSave = this._formSelector.querySelector(this._submitButtonSelector);
-    this._toggleButtonState(inputList, buttonSave);
-    inputList.forEach(inputElement => {
+    this._toggleButtonState();
+    this._inputList.forEach(inputElement => {
       inputElement.addEventListener('input', (evt) => {
-        this._toggleButtonState(inputList, buttonSave);
+        this._toggleButtonState();
         this._checkInputValidity(inputElement);
       })
     })
@@ -66,14 +64,12 @@ export class FormValidator {
   // Обнуление валидации
 
   clearValidation = () => {
-    const inputList = Array.from(this._formSelector.querySelectorAll(this._inputSelector));
-    const buttonSave = this._formSelector.querySelector(this._submitButtonSelector);
-    inputList.forEach(inputEl => {
+    this._inputList.forEach(inputEl => {
       if (inputEl.classList.contains(this._inputErrorClass)) {
         this._hideError(inputEl);
       }
     })
-    this._toggleButtonState(inputList, buttonSave);
+    this._toggleButtonState();
   }
 
   // Включение валидации

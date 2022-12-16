@@ -4,10 +4,10 @@ import { FormValidator } from "./FormValidator.js";
 const popups = document.querySelectorAll('.popup');
 const popupEditProfile = document.querySelector('.popup-profile');
 const popupAddCard = document.querySelector('.popup-add-card');
-const formElement = document.querySelector('.edit-profile-form');
+const formEditProfile = document.querySelector('.edit-profile-form');
 const formCard = document.querySelector('.add-card-form');
-const nameInput = formElement.querySelector('.popup__input_value_name');
-const jobInput = formElement.querySelector('.popup__input_value_profession');
+const nameInput = formEditProfile.querySelector('.popup__input_value_name');
+const jobInput = formEditProfile.querySelector('.popup__input_value_profession');
 const nameCard = formCard.querySelector('.popup__input_value_place');
 const sourceImageCard = formCard.querySelector('.popup__input_value_url');
 const elementsSection = document.querySelector('.elements');
@@ -55,16 +55,14 @@ const configValidate = {
   errorClass: 'popup__input-error_active'
 }
 
-const formElementValidator = new FormValidator(configValidate, formElement);
+const formEditProfileValidator = new FormValidator(configValidate, formEditProfile);
 const formCardValidator = new FormValidator(configValidate, formCard);
 
-formElementValidator.enableValidation();
+formEditProfileValidator.enableValidation();
 formCardValidator.enableValidation();
 
-
-
 function renderElement(dataElement) {
-  const card = new Card(dataElement, '#element-template');
+  const card = new Card(dataElement, '#element-template', openPopup);
   elementsSection.prepend(card.generateElement());
 }
 
@@ -127,7 +125,7 @@ const setEventListenerEsc = (evt) => {
 editProfileButton.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileProffesion.textContent;
-  formElementValidator.clearValidation();
+  formEditProfileValidator.clearValidation();
   openPopup(popupEditProfile);
 });
 addCardButton.addEventListener('click', () => {
@@ -136,7 +134,7 @@ addCardButton.addEventListener('click', () => {
   formCardValidator.clearValidation();
   openPopup(popupAddCard);
 });
-formElement.addEventListener('submit', handleProfileFormSubmit);
+formEditProfile.addEventListener('submit', handleProfileFormSubmit);
 formCard.addEventListener('submit', handleCardFormSubmit);
 
 
