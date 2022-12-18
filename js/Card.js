@@ -57,6 +57,10 @@ class Card {
 
     return this._element;
   }
+<<<<<<< HEAD:js/card.js
 }
 
 export default Card
+=======
+} 
+>>>>>>> 7eaf6e40ca79e86f04a61ae00fe58fa10f9c760c:js/Card.js
