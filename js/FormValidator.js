@@ -1,4 +1,5 @@
-export class FormValidator {
+
+class FormValidator {
   constructor(config, formSelector) {
     this._formSelector = formSelector;
     this._inputSelector = config.inputSelector;
@@ -11,10 +12,10 @@ export class FormValidator {
   }
 
   _showError = (inputElement, errorMessage) => {
-    this._formError = this._formSelector.querySelector(`.${inputElement.id}-error`);
+    const formError = this._formSelector.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(this._inputErrorClass);
-    this._formError.textContent = errorMessage;
-    this._formError.classList.add(this._errorClass);
+    formError.textContent = errorMessage;
+    formError.classList.add(this._errorClass);
   };
 
   _hideError = (inputElement) => {
@@ -75,5 +76,6 @@ export class FormValidator {
   // Включение валидации
 
   enableValidation = () => this._setEventListeners();
-
 }
+
+export default FormValidator;
